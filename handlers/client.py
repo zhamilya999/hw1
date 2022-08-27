@@ -2,7 +2,7 @@ from aiogram import types, Dispatcher
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import bot, dp
 import random
-
+from database.bot_db import sql_command_random
 
 #@dp.message_handler(commands=['meme'])
 async def send_meme(message: types.Message):
@@ -47,6 +47,10 @@ async def pin(message: types.Message):
         await bot.pin_chat_message(message.chat.id, message.reply_to_message.message_id)
     else:
         await bot.send_message(message.chat.id, "Это команда работает при отваете на сообщение")
+
+
+async def show_random_user(message: types.Message):
+    await sql_command_random(message)
 
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(start_handler, commands=['start', 'help'])
