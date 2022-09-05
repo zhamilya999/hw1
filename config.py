@@ -7,3 +7,4 @@ TOKEN = config("TOKEN")
 bot = Bot(TOKEN)
 dp = Dispatcher(bot=bot, storage=storage)
 ADMIN = [1066450635]
+URL = "https://zhamilyabot.herokuapp.com/"
