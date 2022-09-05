@@ -14,8 +14,8 @@ async def on_startup(_):
 
 inline.register_inline_handler(dp)
 notification.register_handler_notification(dp)
-fsmAdminMenu.register_handlers_fsmAdminMenu(dp)
 client.register_handlers_client(dp)
+fsmAdminMenu.register_handlers_fsmAdminMenu(dp)
 callback.register_handlers_callback(dp)
 extra.register_hanlers_extra(dp)
 
