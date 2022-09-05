@@ -12,11 +12,11 @@ async def on_startup(_):
     asyncio.create_task(notification.scheduler())
     bot_db.sql_create()
 
-extra.register_hanlers_extra(dp)
 notification.register_handler_notification(dp)
 fsmAdminMenu.register_handlers_fsmAdminMenu(dp)
 client.register_handlers_client(dp)
 callback.register_handlers_callback(dp)
+extra.register_hanlers_extra(dp)
 
 
 if __name__ == "__main__":
