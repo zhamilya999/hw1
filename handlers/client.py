@@ -3,6 +3,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import bot, dp
 import random
 from database.bot_db import sql_command_random
+from handlers import news
 
 #@dp.message_handler(commands=['meme'])
 async def send_meme(message: types.Message):
@@ -52,8 +53,15 @@ async def pin(message: types.Message):
 async def show_random_user(message: types.Message):
     await sql_command_random(message)
 
+async def nnews(message: types.Message):
+    data = news.parser()
+    for item in data[:3]:
+        await bot.send_message(message.from_user.id, f"{item['name']}\n\n\n"
+                                                     f"{item['link']}")
+
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(start_handler, commands=['start', 'help'])
     dp.register_message_handler(quiz_1, commands=['quiz'])
     dp.register_message_handler(start_handler, commands=['meme'])
     dp.register_message_handler(pin, commands=['pin'], commands_prefix=['!'])
+    dp.register_message_handler(nnews, commands=['news'])
